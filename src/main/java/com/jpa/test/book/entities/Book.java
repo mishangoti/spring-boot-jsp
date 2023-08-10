@@ -1,5 +1,8 @@
 package com.jpa.test.book.entities;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -18,7 +21,8 @@ public class Book {
 	private int id;
 	private String title;
 	
-	@OneToOne
+	@OneToOne(cascade = CascadeType.ALL)
+	@JsonManagedReference
 	private Author author;
 	
 	public int getId() {
